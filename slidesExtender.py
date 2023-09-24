@@ -1,6 +1,15 @@
 from PyPDF2 import PdfReader, PdfWriter, Transformation
 from reportlab.pdfgen import canvas
 import os
+import re
+
+
+def atoi(text):
+    return int(text) if text.isdigit() else text
+
+
+def natural_keys(text):
+    return [atoi(c) for c in re.split("(\d+)", text)]
 
 
 # Create a blank PDF with the title at the top
@@ -56,8 +65,12 @@ def main():
     output_filename = input("Inserisci il nome del file PDF risultante: ")
     output_pdf_writer = PdfWriter()
 
+    # Ottieni tutti i file PDF dalla directory e ordinali naturalmente
+    all_files = [file_name for file_name in os.listdir(folder_path) if file_name.endswith('.pdf')]
+    sorted_files = sorted(all_files, key=natural_keys)
+
     # Loop through the PDFs in the given folder
-    for file_name in os.listdir(folder_path):
+    for file_name in sorted_files:
         if file_name.endswith(".pdf"):
             full_path = os.path.join(folder_path, file_name)
             title = file_name[:-4]  # Remove '.pdf' to get the title
