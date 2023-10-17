@@ -22,7 +22,7 @@ SlidesExtender is a simple script to combine and extend PDF slides with added ti
 
 ## 📦 Installation
 
-1. Clone the repository: ```git clone https://github.com/your_username/slidesExtender.git```
+1. Clone the repository: ```git clone https://github.com/nicolobartolinii/slidesExtender.git```
 
 2. Navigate to the project directory: ```cd SlidesExtender```
 
